@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://ccu8euqfadka5"]
+
+[ext_resource type="Texture2D" uid="uid://c1dhfogm1gxsr" path="res://assets/backpack.png" id="1_m3ec0"]
+[ext_resource type="Texture2D" uid="uid://b33qdjpae2dcq" path="res://assets/back_arm.png" id="2_13l12"]
+[ext_resource type="Texture2D" uid="uid://pl0mfi2t25nw" path="res://assets/back_leg.png" id="3_8mvvu"]
+[ext_resource type="Texture2D" uid="uid://mbo300jindyq" path="res://assets/front_arm.png" id="4_tqqck"]
+[ext_resource type="Texture2D" uid="uid://cgduql8eyuxf1" path="res://assets/front_leg.png" id="5_hr6iv"]
+[ext_resource type="Texture2D" uid="uid://ddagsdomrxpg4" path="res://assets/head.png" id="6_o40to"]
+[ext_resource type="Texture2D" uid="uid://xyum0mulit5h" path="res://assets/torso.png" id="7_a5vrh"]
+
+[node name="Astronaut" type="Node2D" unique_id=1452836407]
+
+[node name="parts" type="Node2D" parent="." unique_id=721553275]
+position = Vector2(-673, -616)
+
+[node name="BackArm" type="Sprite2D" parent="parts" unique_id=246602555]
+position = Vector2(1239, 902)
+texture = ExtResource("2_13l12")
+
+[node name="Backpack" type="Sprite2D" parent="parts" unique_id=44846434]
+position = Vector2(1211, 905)
+texture = ExtResource("1_m3ec0")
+
+[node name="BackLeg" type="Sprite2D" parent="parts" unique_id=64267172]
+position = Vector2(1241, 938)
+texture = ExtResource("3_8mvvu")
+
+[node name="FrontLeg" type="Sprite2D" parent="parts" unique_id=1081520773]
+position = Vector2(1210, 940)
+rotation = 0.82859683
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("5_hr6iv")
+
+[node name="Torso" type="Sprite2D" parent="parts" unique_id=26874848]
+position = Vector2(1230, 904)
+texture = ExtResource("7_a5vrh")
+
+[node name="FrontArm" type="Sprite2D" parent="parts" unique_id=143513416]
+position = Vector2(1207, 902)
+texture = ExtResource("4_tqqck")
+
+[node name="Head" type="Sprite2D" parent="parts" unique_id=743919607]
+position = Vector2(1238, 863)
+texture = ExtResource("6_o40to")
+
+[node name="Skeleton2D" type="Skeleton2D" parent="." unique_id=1960897575]
+
+[node name="torso" type="Bone2D" parent="Skeleton2D" unique_id=1916899011]
+position = Vector2(552, 288)
+rest = Transform2D(1, 0, 0, 1, 552, 288)
+
+[node name="front_arm" type="Bone2D" parent="Skeleton2D/torso" unique_id=1525553118]
+position = Vector2(-18, -2)
+rest = Transform2D(1, 0, 0, 1, -18, -2)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/torso/front_arm" unique_id=837918095]
+remote_path = NodePath("../../../../parts/FrontArm")
+
+[node name="rear_arm" type="Bone2D" parent="Skeleton2D/torso" unique_id=1064201526]
+position = Vector2(14, -2)
+rest = Transform2D(1, 0, 0, 1, 14, -2)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/torso/rear_arm" unique_id=1675517834]
+remote_path = NodePath("../../../../parts/BackArm")
+
+[node name="head" type="Bone2D" parent="Skeleton2D/torso" unique_id=1574996476]
+position = Vector2(13, -41)
+rest = Transform2D(1, 0, 0, 1, 13, -41)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/torso/head" unique_id=322842805]
+remote_path = NodePath("../../../../parts/Head")
+
+[node name="front_leg" type="Bone2D" parent="Skeleton2D/torso" unique_id=800347021]
+position = Vector2(-15, 36)
+rotation = 0.82859683
+scale = Vector2(0.99999994, 0.99999994)
+rest = Transform2D(0.67591053, 0.73698366, -0.73698366, 0.67591053, -15, 36)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/torso/front_leg" unique_id=1456421397]
+remote_path = NodePath("../../../../parts/FrontLeg")
+
+[node name="rear_leg" type="Bone2D" parent="Skeleton2D/torso" unique_id=760524858]
+position = Vector2(14, 35)
+rest = Transform2D(1, 0, 0, 1, 14, 35)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/torso/rear_leg" unique_id=1269489184]
+remote_path = NodePath("..")
